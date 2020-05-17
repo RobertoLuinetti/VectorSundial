@@ -73,6 +73,15 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessDB.vb" />
+    <Compile Include="DXFWriter.vb" />
+    <Compile Include="Gmap.Designer.vb">
+      <DependentUpon>Gmap.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Gmap.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logger.vb" />
     <Compile Include="Master.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +89,21 @@
       <DependentUpon>Master.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MeridianeDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeridianeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MeridianeDataSet.vb">
+      <DependentUpon>MeridianeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Motti.Designer.vb">
+      <DependentUpon>Motti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Motti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeEquation.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -98,8 +122,14 @@
     <Compile Include="Plotter.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Gmap.resx">
+      <DependentUpon>Gmap.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master.resx">
       <DependentUpon>Master.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Motti.resx">
+      <DependentUpon>Motti.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -109,6 +139,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="MeridianeDataSet.xsc">
+      <DependentUpon>MeridianeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MeridianeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeridianeDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MeridianeDataSet.xss">
+      <DependentUpon>MeridianeDataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -119,6 +160,11 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Meridiane.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

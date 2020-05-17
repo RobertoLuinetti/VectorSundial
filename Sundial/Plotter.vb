@@ -13,6 +13,10 @@
     Public Ywide As Integer
     Public PY0R As Single
     Public PX0R As Single
+    Public PenStatus As Char
+    Public MovedX As Double
+    Public MovedY As Double
+    Public ClippedX1, ClippedX2, ClippedY1, ClippedY2 As Double
 
     Public PenRed As New Pen(Color.Red, 0)
     Public PenGreen As New Pen(Color.Green, 0)
@@ -22,6 +26,8 @@
     Public PenLightGreen As New Pen(Color.LightGreen, 0)
     Public PenLightWhite As New Pen(Color.WhiteSmoke, 0)
     Public PenCyan As New Pen(Color.Cyan, 0)
+    Public PenGray As New Pen(Color.Gray, 0)
+
 
     Public Sub SetDisplayPhysicalArea(VpicGraph As PictureBox, XWAreaPix As Single, YHAreaPix As Single, X0pix As Single, Y0pix As Single, XWDisplayPix As Single, YHDisplayPix As Single)
         VpicGraph.Width = XWAreaPix
@@ -54,6 +60,7 @@
 
     Public Sub Draw(gr As Graphics, P As Pen, x1 As Single, y1 As Single, x2 As Single, y2 As Single)
         If (y1 > Ymax And y2 > Ymax) Or (y1 < Ymin And y2 < Ymin) Or (x1 > Xmax And x2 > Xmax) Or (x1 < Xmin And x2 < Xmin) Then
+        ElseIf y1 > Ymax And y2 > Ymax And y1 < Ymin And y2 < Ymin And x1 > Xmax And x2 > Xmax And x1 < Xmin And x2 < Xmin Then
         Else
             If x2 > Xmax Then
                 y2 = ((y2 - y1) / (x2 - x1)) * (Xmax - x1) + y1
@@ -90,6 +97,12 @@
             End If
 
             gr.DrawLine(P, PX0 - Xmin / Xratio + x1 / Xratio, PY0 + Ymin / Yratio + y1 / Yratio * -1, PX0 - Xmin / Xratio + x2 / Xratio, PY0 + Ymin / Yratio + y2 / Yratio * -1)
+
+            ClippedX1 = x1
+            ClippedX2 = x2
+            ClippedY1 = y1
+            Clippedy2 = y2
+
         End If
     End Sub
 
@@ -104,14 +117,33 @@
         gr.DrawImage(BM, PX0 - Xmin / Xratio + RX0 / Xratio - Convert.ToSingle(BM.Width / 2), PY0 + Ymin / Yratio + RY0 / Yratio * -1 - Convert.ToSingle(BM.Height / 2))
     End Sub
 
+    Public Sub Penup()
+        PenStatus = "U"
+    End Sub
+
+    Public Sub Move(ByVal X As Double, ByVal Y As Double)
+        MovedX = X
+        MovedY = Y
+    End Sub
+
     Public Sub Plot(gr As Graphics, C As Color, x1 As Single, y1 As Single)
         Dim BMP As New Bitmap(1, 1)
         BMP.SetPixel(0, 0, C)
-        If (y1 > Ymax) Or (y1 < Ymin) Or (x1 > Xmax) Or (x1 < Xmin) Then
+
+        If ((y1 > Ymax) Or (y1 < Ymin) Or (x1 > Xmax) Or (x1 < Xmin)) Then Penup()
+
+        If PenStatus = "U" Then
+            If Not ((y1 > Ymax) Or (y1 < Ymin) Or (x1 > Xmax) Or (x1 < Xmin)) Then
+                gr.DrawImage(BMP, New Point(PX0 - Xmin / Xratio + x1 / Xratio, PY0 + Ymin / Yratio + y1 / Yratio * -1))
+            End If
+            Move(x1, y1)
+            PenStatus = "D"
         Else
-            'gr.DrawRectangle(P, PX0 - Xmin / Xratio + x1 / Xratio, PY0 + Ymin / Yratio + y1 / Yratio * -1, 0.5F, 0.5F)
-            gr.DrawImage(BMP, New Point(PX0 - Xmin / Xratio + x1 / Xratio, PY0 + Ymin / Yratio + y1 / Yratio * -1))
+            Draw(gr, New Pen(C, 0), MovedX, MovedY, x1, y1)
+            MovedX = x1
+            MovedY = y1
         End If
+
     End Sub
 
     Public Sub Label(gr As Graphics, T As String, Font As String, Size As Single, C As Color, RX0 As Single, RY0 As Single)
@@ -237,5 +269,7 @@
             End If
         Next Yn
     End Sub
+
+
 End Module
 
