@@ -47,6 +47,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Google-Noto-Emoji-Travel-Places-42516-sunrise-over-mountains.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -162,6 +165,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Google-Noto-Emoji-Travel-Places-42516-sunrise-over-mountains.ico" />
     <Content Include="Meridiane.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

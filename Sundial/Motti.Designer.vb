@@ -22,6 +22,7 @@ Partial Class Motti
     'Non modificarla mediante l'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Motti))
         Me.ListBoxMotti = New System.Windows.Forms.ListBox()
         Me.ButtonSelect = New System.Windows.Forms.Button()
         Me.SuspendLayout()
@@ -50,6 +51,7 @@ Partial Class Motti
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.ButtonSelect)
         Me.Controls.Add(Me.ListBoxMotti)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Motti"
         Me.Text = "Motti"
         Me.ResumeLayout(False)

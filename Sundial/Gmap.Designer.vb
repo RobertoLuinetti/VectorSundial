@@ -22,6 +22,7 @@ Partial Class Gmap
     'Non modificarla mediante l'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Gmap))
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
         Me.BTGetCoords = New System.Windows.Forms.Button()
         Me.TXTStreet = New System.Windows.Forms.TextBox()
@@ -334,6 +335,7 @@ Partial Class Gmap
         Me.Controls.Add(Me.TXTStreet)
         Me.Controls.Add(Me.BTGetCoords)
         Me.Controls.Add(Me.WebBrowser1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Gmap"
         Me.Text = "Gmap"
         Me.ResumeLayout(False)

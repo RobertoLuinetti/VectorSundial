@@ -22,6 +22,7 @@ Partial Class Master
     'Non modificarla mediante l'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Master))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LongQ = New System.Windows.Forms.TextBox()
@@ -666,6 +667,7 @@ Partial Class Master
         Me.Controls.Add(Me.LongG)
         Me.Controls.Add(Me.LatP)
         Me.Controls.Add(Me.LatG)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Master"
         Me.Text = "Vector Sundial"
         CType(Me.PicGraph, System.ComponentModel.ISupportInitialize).EndInit()

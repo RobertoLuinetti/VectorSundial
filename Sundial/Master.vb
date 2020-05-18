@@ -441,15 +441,15 @@
         If Qta = 0 Then
             Dim StrSQL As String = "INSERT INTO [POSITION] ([DESCRIPTION], [GNOMON], [HEIGHT], [WIDTH], [LATG], [LATP], [LATS], [LATQ], [LONGG], [LONGP], [LONGS], [LONGQ],[Declination],[HShift],[VShift],[TimeDetail],[Lemniscate],[TimeEquation]) VALUES ("
             StrSQL = StrSQL & "'" & Description.Text & "',"
-            StrSQL = StrSQL & Gnomone.Text & ","
-            StrSQL = StrSQL & Altezza.Text & ","
-            StrSQL = StrSQL & Larghezza.Text & ","
-            StrSQL = StrSQL & LatG.Text & ","
-            StrSQL = StrSQL & LatP.Text & ","
+            StrSQL = StrSQL & Gnomone.Text.Replace(",", ".") & ","
+            StrSQL = StrSQL & Altezza.Text.Replace(",", ".") & ","
+            StrSQL = StrSQL & Larghezza.Text.Replace(",", ".") & ","
+            StrSQL = StrSQL & LatG.Text.Replace(",", ".") & ","
+            StrSQL = StrSQL & LatP.Text.Replace(",", ".") & ","
             StrSQL = StrSQL & LatS.Text.Replace(",", ".") & ","
             StrSQL = StrSQL & "'" & LatQ.Text & "',"
-            StrSQL = StrSQL & LongG.Text & ","
-            StrSQL = StrSQL & LongP.Text & ","
+            StrSQL = StrSQL & LongG.Text.Replace(",", ".") & ","
+            StrSQL = StrSQL & LongP.Text.Replace(",", ".") & ","
             StrSQL = StrSQL & LongS.Text.Replace(",", ".") & ","
             StrSQL = StrSQL & "'" & LongQ.Text & "',"
             StrSQL = StrSQL & Declinazione.Value & ","
@@ -472,6 +472,7 @@
                 StrSQL = StrSQL & "false)"
             End If
 
+            MsgBox(StrSQL)
             ExecuteCommand(StrSQL)
         Else
             Dim StrSQL As String = "UPDATE [POSITION] "
@@ -508,6 +509,7 @@
 
             StrSQL = StrSQL & " WHERE [DESCRIPTION]='" & Description.Text & "'"
 
+            MsgBox(StrSQL)
             ExecuteCommand(StrSQL)
 
         End If
