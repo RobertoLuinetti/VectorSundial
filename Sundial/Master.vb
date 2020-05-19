@@ -472,7 +472,7 @@
                 StrSQL = StrSQL & "false)"
             End If
 
-            MsgBox(StrSQL)
+            'MsgBox(StrSQL)
             ExecuteCommand(StrSQL)
         Else
             Dim StrSQL As String = "UPDATE [POSITION] "
@@ -509,7 +509,7 @@
 
             StrSQL = StrSQL & " WHERE [DESCRIPTION]='" & Description.Text & "'"
 
-            MsgBox(StrSQL)
+            'MsgBox(StrSQL)
             ExecuteCommand(StrSQL)
 
         End If

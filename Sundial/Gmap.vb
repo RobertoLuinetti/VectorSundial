@@ -115,7 +115,7 @@ Public Class Gmap
 
     Private Sub ButtonUseCoord_Click(sender As Object, e As EventArgs) Handles ButtonUseCoord.Click
         Master.LatG.Text = Me.LatG.Text
-        Master.LatP.Text = Me.LatG.Text
+        Master.LatP.Text = Me.LatP.Text
         Master.LatS.Text = Me.LatS.Text
         Master.LongQ.Text = Me.LongQ.Text
 
