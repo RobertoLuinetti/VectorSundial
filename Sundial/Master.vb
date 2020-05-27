@@ -58,7 +58,7 @@
             Draw(gr, PenCyan, 0, -ofc, 0, +ofc)
 
             'ScaleFactor
-            Dim SC As Double = CDbl(Altezza.Text.Replace(",", ".")) / (Math.Abs(yb) + Math.Abs(yt))
+            Dim SC As Double = CDbl(Altezza.Text.Replace(",", ".")) / (Math.Abs(yb) + Math.Abs(yt)) * 10
 
             If DXFOut Then DXF_Border("Sundial", xl * SC, yb * SC, 0, xr * SC, yt * SC, 0)
             If DXFOut Then

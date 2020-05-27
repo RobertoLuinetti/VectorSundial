@@ -92,14 +92,6 @@
       <DependentUpon>Master.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MeridianeDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MeridianeDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="MeridianeDataSet.vb">
-      <DependentUpon>MeridianeDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Motti.Designer.vb">
       <DependentUpon>Motti.vb</DependentUpon>
     </Compile>
@@ -142,17 +134,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MeridianeDataSet.xsc">
-      <DependentUpon>MeridianeDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="MeridianeDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MeridianeDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="MeridianeDataSet.xss">
-      <DependentUpon>MeridianeDataSet.xsd</DependentUpon>
-    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
